@@ -2,6 +2,6 @@
   "name": "ordy-master-root",
   "scripts": {
     "install:all": "npm install --prefix bookings-backend/backend",
-    "dev:back": "npm run start:dev --prefix bookings-backend/backend",
+    "dev:back": "npm run start:dev --prefix bookings-backend/backend"
   }
 }
