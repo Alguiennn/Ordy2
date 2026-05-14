@@ -10,12 +10,17 @@ exports.BusinessModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const business_entity_1 = require("./business.entity");
+const business_controller_1 = require("./business.controller");
+const business_service_1 = require("./business.service");
 let BusinessModule = class BusinessModule {
 };
 exports.BusinessModule = BusinessModule;
 exports.BusinessModule = BusinessModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([business_entity_1.Business])],
+        controllers: [business_controller_1.BusinessController],
+        providers: [business_service_1.BusinessService],
+        exports: [business_service_1.BusinessService],
     })
 ], BusinessModule);
 //# sourceMappingURL=business.module.js.map

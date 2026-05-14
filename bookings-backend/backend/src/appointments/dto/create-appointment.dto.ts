@@ -20,7 +20,7 @@ export class CreateAppointmentDto {
 
   @ApiProperty({ example: 1 })
   @IsInt()
-  customerId: number;
+  customerId: number; 
 
   @ApiProperty({ example: 1 })
   @IsInt()

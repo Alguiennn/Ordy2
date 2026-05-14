@@ -18,10 +18,13 @@ async function bootstrap() {
         .setTitle('Booking Management API')
         .setDescription('API MVP para gestión de reservas de comercios')
         .setVersion('1.0')
+        .addTag('business')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     await app.listen(3000);
+    console.log(`🚀 Server running on http://localhost:3000`);
+    console.log(`📘 Swagger running on http://localhost:3000/api`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
