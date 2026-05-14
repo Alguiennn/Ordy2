@@ -30,24 +30,42 @@ __decorate([
     __metadata("design:type", Number)
 ], Customer.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 10, unique: true }),
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 10,
+        unique: true,
+        nullable: true,
+    }),
     __metadata("design:type", String)
 ], Customer.prototype, "code", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 100 }),
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 100,
+    }),
     __metadata("design:type", String)
 ], Customer.prototype, "name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 20, nullable: true }),
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 20,
+        nullable: true,
+    }),
     __metadata("design:type", String)
 ], Customer.prototype, "phone", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 100, unique: true }),
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 100,
+        unique: true,
+    }),
     __metadata("design:type", String)
 ], Customer.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => business_entity_1.Business, business => business.customers),
-    (0, typeorm_1.JoinColumn)({ name: 'businessId' }),
+    (0, typeorm_1.JoinColumn)({
+        name: 'businessId',
+    }),
     __metadata("design:type", business_entity_1.Business)
 ], Customer.prototype, "business", void 0);
 __decorate([

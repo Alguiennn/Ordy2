@@ -19,6 +19,7 @@ async function bootstrap() {
         .setDescription('API MVP para gestión de reservas de comercios')
         .setVersion('1.0')
         .addTag('business')
+        .addTag('customers')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);

@@ -3,7 +3,7 @@ import { Appointment } from '../appointments/appointment.entity';
 import { Payment } from '../payments/payments.entity';
 export declare class Customer {
     id: number;
-    code: string;
+    code?: string;
     name: string;
     phone: string;
     email: string;

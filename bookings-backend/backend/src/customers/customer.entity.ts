@@ -13,30 +13,59 @@ import { Payment } from '../payments/payments.entity';
 
 @Entity()
 export class Customer {
+
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 10, unique: true })
-  code: string;
+  // OPCIONAL
+  @Column({
+    type: 'varchar',
+    length: 10,
+    unique: true,
+    nullable: true,
+  })
+  code?: string;
 
-  @Column({ type: 'varchar', length: 100 })
+  @Column({
+    type: 'varchar',
+    length: 100,
+  })
   name: string;
 
-  @Column({ type: 'varchar', length: 20, nullable: true })
+  @Column({
+    type: 'varchar',
+    length: 20,
+    nullable: true,
+  })
   phone: string;
 
-  @Column({ type: 'varchar', length: 100, unique: true })
+  @Column({
+    type: 'varchar',
+    length: 100,
+    unique: true,
+  })
   email: string;
 
-  // FK real
-  @ManyToOne(() => Business, business => business.customers)
-  @JoinColumn({ name: 'businessId' })
+  // FK BUSINESS
+  @ManyToOne(
+    () => Business,
+    business => business.customers,
+  )
+  @JoinColumn({
+    name: 'businessId',
+  })
   business: Business;
 
   // RELACIONES
-  @OneToMany(() => Appointment, appointment => appointment.customer)
+  @OneToMany(
+    () => Appointment,
+    appointment => appointment.customer,
+  )
   appointments: Appointment[];
 
-  @OneToMany(() => Payment, payment => payment.customer)
+  @OneToMany(
+    () => Payment,
+    payment => payment.customer,
+  )
   payments: Payment[];
 }
