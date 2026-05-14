@@ -1,4 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+
+import { Customer } from '../customers/customer.entity';
+import { Business } from '../business/business.entity';
 
 export enum AppointmentStatus {
   PENDING = 'pending',
@@ -24,11 +33,15 @@ export class Appointment {
   status: AppointmentStatus;
 
   @Column()
-  customerId: number;
-
-  @Column()
-  businessId: number;
-
-  @Column()
   serviceName: string;
+
+  // 🔗 FK cliente
+  @ManyToOne(() => Customer, customer => customer.appointments)
+  @JoinColumn({ name: 'customerId' })
+  customer: Customer;
+
+  // 🔗 FK negocio
+  @ManyToOne(() => Business, business => business.appointments)
+  @JoinColumn({ name: 'businessId' })
+  business: Business;
 }

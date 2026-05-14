@@ -1,16 +1,16 @@
 import { Customer } from '../customers/customer.entity';
 import { Business } from '../business/business.entity';
-export declare enum AppointmentStatus {
+export declare enum PaymentStatus {
     PENDING = "pending",
-    CONFIRMED = "confirmed",
     PAID = "paid"
 }
-export declare class Appointment {
+export declare class Payment {
     id: number;
+    code: string;
+    amount: number;
+    method: string;
     date: string;
-    time: string;
-    status: AppointmentStatus;
-    serviceName: string;
+    status: PaymentStatus;
     customer: Customer;
     business: Business;
 }

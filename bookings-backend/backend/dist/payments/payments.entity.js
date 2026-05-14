@@ -9,60 +9,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Appointment = exports.AppointmentStatus = void 0;
+exports.Payment = exports.PaymentStatus = void 0;
 const typeorm_1 = require("typeorm");
 const customer_entity_1 = require("../customers/customer.entity");
 const business_entity_1 = require("../business/business.entity");
-var AppointmentStatus;
-(function (AppointmentStatus) {
-    AppointmentStatus["PENDING"] = "pending";
-    AppointmentStatus["CONFIRMED"] = "confirmed";
-    AppointmentStatus["PAID"] = "paid";
-})(AppointmentStatus || (exports.AppointmentStatus = AppointmentStatus = {}));
-let Appointment = class Appointment {
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["PENDING"] = "pending";
+    PaymentStatus["PAID"] = "paid";
+})(PaymentStatus || (exports.PaymentStatus = PaymentStatus = {}));
+let Payment = class Payment {
     id;
+    code;
+    amount;
+    method;
     date;
-    time;
     status;
-    serviceName;
     customer;
     business;
 };
-exports.Appointment = Appointment;
+exports.Payment = Payment;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Appointment.prototype, "id", void 0);
+], Payment.prototype, "id", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', length: 10, unique: true }),
+    __metadata("design:type", String)
+], Payment.prototype, "code", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'decimal', precision: 10, scale: 2 }),
+    __metadata("design:type", Number)
+], Payment.prototype, "amount", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', length: 50 }),
+    __metadata("design:type", String)
+], Payment.prototype, "method", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'date' }),
     __metadata("design:type", String)
-], Appointment.prototype, "date", void 0);
+], Payment.prototype, "date", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ type: 'text', default: PaymentStatus.PENDING }),
     __metadata("design:type", String)
-], Appointment.prototype, "time", void 0);
+], Payment.prototype, "status", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        type: 'text',
-        default: AppointmentStatus.PENDING,
-    }),
-    __metadata("design:type", String)
-], Appointment.prototype, "status", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Appointment.prototype, "serviceName", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => customer_entity_1.Customer, customer => customer.appointments),
+    (0, typeorm_1.ManyToOne)(() => customer_entity_1.Customer, customer => customer.payments),
     (0, typeorm_1.JoinColumn)({ name: 'customerId' }),
     __metadata("design:type", customer_entity_1.Customer)
-], Appointment.prototype, "customer", void 0);
+], Payment.prototype, "customer", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => business_entity_1.Business, business => business.appointments),
+    (0, typeorm_1.ManyToOne)(() => business_entity_1.Business, business => business.payments),
     (0, typeorm_1.JoinColumn)({ name: 'businessId' }),
     __metadata("design:type", business_entity_1.Business)
-], Appointment.prototype, "business", void 0);
-exports.Appointment = Appointment = __decorate([
+], Payment.prototype, "business", void 0);
+exports.Payment = Payment = __decorate([
     (0, typeorm_1.Entity)()
-], Appointment);
-//# sourceMappingURL=appointment.entity.js.map
+], Payment);
+//# sourceMappingURL=payments.entity.js.map
