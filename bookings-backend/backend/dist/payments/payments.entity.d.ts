@@ -6,7 +6,7 @@ export declare enum PaymentStatus {
 }
 export declare class Payment {
     id: number;
-    code: string;
+    code?: string;
     amount: number;
     method: string;
     date: string;

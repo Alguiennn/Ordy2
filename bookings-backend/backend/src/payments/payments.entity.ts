@@ -19,8 +19,13 @@ export class Payment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 10, unique: true })
-  code: string;
+  @Column({
+    type: 'varchar',
+    length: 10,
+    unique: true,
+    nullable: true,
+  })
+  code?: string;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   amount: number;

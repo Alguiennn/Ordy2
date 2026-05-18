@@ -34,7 +34,12 @@ __decorate([
     __metadata("design:type", Number)
 ], Payment.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar', length: 10, unique: true }),
+    (0, typeorm_1.Column)({
+        type: 'varchar',
+        length: 10,
+        unique: true,
+        nullable: true,
+    }),
     __metadata("design:type", String)
 ], Payment.prototype, "code", void 0);
 __decorate([
