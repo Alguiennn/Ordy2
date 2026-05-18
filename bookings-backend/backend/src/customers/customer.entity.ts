@@ -17,7 +17,7 @@ export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
 
-  // OPCIONAL
+  // Se coloca como campo code opcional
   @Column({
     type: 'varchar',
     length: 10,

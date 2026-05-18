@@ -7,6 +7,8 @@ import {
   IsString,
 } from 'class-validator';
 
+// Se declara segun tu tabla la creacion del dato
+
 export class CreateCustomersDto {
 
   @ApiProperty({

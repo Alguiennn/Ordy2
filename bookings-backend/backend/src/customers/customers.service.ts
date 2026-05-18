@@ -62,13 +62,13 @@ export class CustomersService {
 
   // ACTUALIZAR
   async update(
-    id: number,
-    updateCustomersDto: UpdateCustomersDto,
+    id: number, // El cliente que vas a actualizar
+    updateCustomersDto: UpdateCustomersDto, // Que datos se permiten actualizar : Tipo de dato que siga la estructura del objeto
   ) {
 
-    const customer = await this.customerRepository.findOne({
-      where: { id },
-      relations: ['business'],
+    const customer = await this.customerRepository.findOne({ //Busca en la base de datos
+      where: { id }, 
+      relations: ['business'], // Tra el la relacion con el ID cliente
     });
 
     if (!customer) {
